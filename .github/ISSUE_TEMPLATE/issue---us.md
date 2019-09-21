@@ -7,8 +7,6 @@ assignees: ''
 
 ---
 
-US X - Título da issue
-
 **Descrição**
 
 **Tarefas**
