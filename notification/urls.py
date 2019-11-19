@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from notifications.views import SendNotification
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('notification-data/', SendNotification.as_view()),
 ]
