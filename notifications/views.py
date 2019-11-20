@@ -17,7 +17,8 @@ class SendNotification(APIView):
     def post(self, request):
         print("[LOG] Modules and modules status received...")
         try:
-            modules = request.data
+            modules = request.data["modules"]
+            tokens = request.data["notification_tokens"]
             print("[LOG] Cheking modules status...")
             for module in modules:
                 if(module["module_status"] == "OFFLINE"):
