@@ -21,6 +21,7 @@ class SendNotification(APIView):
             modules = request.data["modules"]
             tokens = request.data["notification_tokens"]
             print("[LOG] Cheking modules status...")
+            print(len(modules))
             for module in modules:
                 if(module["module_status"] == "OFFLINE"):
                     message = "The module " + module["module_name"] + " is offline!"

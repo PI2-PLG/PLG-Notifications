@@ -8,7 +8,6 @@ from requests.exceptions import HTTPError
 
 def send_notification(tokens, message, extra=None):
     for token in tokens:
-        print("AQUUII " + token)
         try:
             response = PushClient().publish(
                 PushMessage(to=token,
