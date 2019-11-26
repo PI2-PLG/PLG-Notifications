@@ -34,3 +34,13 @@ $ docker-compose -f docker-compose.yml up
 Com o processo tendo funcionado perfeitamente, será possível acessar a interface da API em:
 
 * https:\\\\localhost:8000
+
+## Exemplos de requisição:
+
+* Requisição de todas as notificações
+
+```
+
+curl -X GET http://localhost:8001/all-notifications/
+
+```
