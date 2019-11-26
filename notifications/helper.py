@@ -26,9 +26,13 @@ def create_notification(module):
     notification = Notification(
                                 title=title,
                                 message=message,
-                                module_name=module_name,
+                                module_name=module["module_name"],
                                 )
-    notification.save()
+    try:
+        notification.save()
+        print("[LOG] Notification created!")
+    except:
+        print("[LOG] Notification not created!")
 
 def send_notification(tokens, message, extra=None):
     for token in tokens:
