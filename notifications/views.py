@@ -19,27 +19,27 @@ class SendNotification(APIView):
 
     def post(self, request):
         print("[LOG] Modules and modules status received...")
-        # try:
-        modules = request.data["modules"]
-        tokens = request.data["notification_tokens"]
-        print("[LOG] Cheking modules status...")
-        for module in modules:
-            if(module["module_status"] == "OFFLINE"):
-                message = "The module " + module["module_name"] + " is offline!"
-                create_notification(module=module)
-                send_notification(tokens, message)
-            elif(module["module_status"] == "FIRERISK"):
-                message = "This module (" + module["module_name"] + ") is on fire risk!"
-                create_notification(module=module)
-                send_notification(tokens, message)
-            elif(module["module_status"] == "IN_MOTION"):
-                message = "The module " + module["module_name"] + " is in move!"
-                create_notification(module=module)
-                send_notification(tokens, message)
-        return Response({"response":"notifications_sent"}, status=status.HTTP_200_OK)
+        try:
+            modules = request.data["modules"]
+            tokens = request.data["notification_tokens"]
+            print("[LOG] Cheking modules status...")
+            for module in modules:
+                if(module["module_status"] == "OFFLINE"):
+                    message = "The module " + module["module_name"] + " is offline!"
+                    create_notification(module=module)
+                    send_notification(tokens, message)
+                elif(module["module_status"] == "FIRERISK"):
+                    message = "This module (" + module["module_name"] + ") is on fire risk!"
+                    create_notification(module=module)
+                    send_notification(tokens, message)
+                elif(module["module_status"] == "IN_MOTION"):
+                    message = "The module " + module["module_name"] + " is in move!"
+                    create_notification(module=module)
+                    send_notification(tokens, message)
+            return Response({"response":"notifications_sent"}, status=status.HTTP_200_OK)
 
-        # except:
-            # return Response({"response":"unsent_notification"}, status=status.HTTP_200_OK)
+        except:
+            return Response({"response":"unsent_notification"}, status=status.HTTP_200_OK)
 
 class Notifications(APIView):
 
