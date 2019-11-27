@@ -56,8 +56,8 @@ class Notifications(APIView):
                 aux["title"] = notification.title
                 aux["message"] = notification.message
                 aux["module_name"] = notification.module_name
-                aux["date"] = notification.date
-                aux["hour"] = "12121212"
+                aux["date"] = notification.date.date()
+                aux["hour"] = notification.date.strftime('%H:%M')
             elif(notification.type == "inmotion"):
                 aux["type"] = notification.type
                 aux["title"] = notification.title
@@ -73,8 +73,8 @@ class Notifications(APIView):
                 aux["module_name"] = notification.module_name
                 aux["temperature"] = notification.temperature
                 aux["humidity"] = notification.humidity
-                aux["date"] = notification.date
-                aux["hour"] = "asndiasjdiasd"
+                aux["date"] = notification.date.date()
+                aux["hour"] = notification.date.strftime('%H:%M')
             response.append(aux)
 
         return Response(response, status=status.HTTP_200_OK)
