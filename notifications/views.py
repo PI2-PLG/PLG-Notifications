@@ -25,15 +25,15 @@ class SendNotification(APIView):
             print("[LOG] Cheking modules status...")
             for module in modules:
                 if(module["module_status"] == "OFFLINE"):
-                    message = "The module " + module["module_name"] + " is offline!"
+                    message = "O modulo" + module["module_name"] + " esta offline (nao foi possivel encontrar sua latitude e longitude)!"
                     create_notification(module=module)
                     send_notification(tokens, message)
                 elif(module["module_status"] == "FIRERISK"):
-                    message = "This module (" + module["module_name"] + ") is on fire risk!"
+                    message = "O modulo (" + module["module_name"] + ") esta em risco de incêndio!"
                     create_notification(module=module)
                     send_notification(tokens, message)
                 elif(module["module_status"] == "IN_MOTION"):
-                    message = "The module " + module["module_name"] + " is in move!"
+                    message = "O modulo" + module["module_name"] + " esta em movimento!"
                     create_notification(module=module)
                     send_notification(tokens, message)
             return Response({"response":"notifications_sent"}, status=status.HTTP_200_OK)
